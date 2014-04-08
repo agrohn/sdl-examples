@@ -37,7 +37,7 @@ SET( LIBS
   ${SDL2_MIXER_LIBRARY} 
 )
 
-file(GLOB_RECURSE DLLS RELATIVE deps *.dll)
+file(GLOB_RECURSE DLLS *.dll)
 include_directories( sdl-examples ${INCLUDEDIRS} )
 
 add_custom_target(copy)
@@ -47,8 +47,6 @@ add_custom_command( TARGET copy PRE_BUILD
 
 
 # Windows needs its dlls.
-if( WIN32)
-
 # do the copying
 foreach( file_i ${DLLS})
     add_custom_command(
@@ -59,7 +57,7 @@ foreach( file_i ${DLLS})
 )
 endforeach( file_i )
 
-endif()
+
 
 # --------------------------------------
 # Executable to be built
