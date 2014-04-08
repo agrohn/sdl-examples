@@ -7,7 +7,6 @@
 using namespace std;
 const int WINDOW_WIDTH  = 640;
 const int WINDOW_HEIGHT = 480;
-const int COLOR_DEPTH_IN_BITS = 24;
 
 int main( int argc, char **argv )
 {
@@ -24,7 +23,8 @@ int main( int argc, char **argv )
 					 SDL_WINDOW_SHOWN
 					 );
   
-  SDL_Renderer *renderer = SDL_CreateRenderer( pScreen, -1,  SDL_RENDERER_ACCELERATED);
+  SDL_Renderer *renderer = SDL_CreateRenderer( pScreen, -1,  
+					       SDL_RENDERER_ACCELERATED);
   if ( pScreen == NULL )
   {
     std::cerr << "Could not open window: " 

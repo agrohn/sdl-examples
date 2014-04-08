@@ -7,7 +7,6 @@
 using namespace std;
 const int WINDOW_WIDTH  = 640;
 const int WINDOW_HEIGHT = 480;
-const int COLOR_DEPTH_IN_BITS = 24;
 
 int main( int argc, char **argv )
 {
@@ -24,7 +23,8 @@ int main( int argc, char **argv )
 					 SDL_WINDOW_SHOWN
 					 );
   
-  SDL_Renderer *renderer = SDL_CreateRenderer( pScreen, -1,  SDL_RENDERER_ACCELERATED);
+  SDL_Renderer *renderer = SDL_CreateRenderer( pScreen, -1,  
+					       SDL_RENDERER_ACCELERATED);
   if ( pScreen == NULL )
   {
     std::cerr << "Could not open window: " 
@@ -34,7 +34,7 @@ int main( int argc, char **argv )
   }
   
   
-  // Attempt to convert it to texture
+  // Load directly into texture via SDL_image
   SDL_Texture * pImage = IMG_LoadTexture(renderer, "res/sdl-logo.png");
   if ( pImage == NULL  ) throw runtime_error(SDL_GetError());
   
@@ -49,15 +49,16 @@ int main( int argc, char **argv )
   src.h = h;
 
   // Select are on screen where image is drawn.
-  // (w and h in this case do not matter, since we do not scale image.)
   SDL_Rect dest;
 
   dest.x = 120;
   dest.y = 220;
-  dest.w = w;
-  dest.h = h;
+  dest.w = w/2;
+  dest.h = h/2;
   bool bRunning = true;
+  // set background color 
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
+  // enable alpha blending
   SDL_SetTextureBlendMode( pImage, SDL_BLENDMODE_BLEND);
   while ( bRunning )
   {
@@ -80,10 +81,6 @@ int main( int argc, char **argv )
     // flip buffers
     SDL_RenderPresent( renderer );
   }
-  // Release image 
-  //SDL_FreeSurface(pImage );
-
-
   SDL_Quit();
   return 0;
 }
