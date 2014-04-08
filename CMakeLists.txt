@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(quickescape )
+project(sdl-examples )
 # Use also project's custom cmake modules.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 SET(CMAKE_BUILD_TYPE Debug)
@@ -37,7 +37,7 @@ SET( LIBS
   ${SDL2_MIXER_LIBRARY} 
 )
 
-include_directories( quickescape ${INCLUDEDIRS} )
+include_directories( sdl-examples ${INCLUDEDIRS} )
 
 add_custom_target(copy)
 add_custom_command( TARGET copy PRE_BUILD
