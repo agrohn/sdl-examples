@@ -48,9 +48,16 @@ add_custom_command( TARGET copy PRE_BUILD
 
 # Windows needs its dlls.
 if( WIN32)
-add_custom_command( TARGET copy PRE_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy
-  ${DLLS} ${CMAKE_CURRENT_BINARY_DIR})
+# do the copying
+foreach( file_i ${DLLS})
+    add_custom_command(
+    TARGET copy
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND}
+    ARGS -E copy ${file_i} ${CMAKE_CURRENT_BINARY_DIR}
+)
+endforeach( file_i )
+
 endif()
 
 # --------------------------------------
