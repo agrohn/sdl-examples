@@ -37,12 +37,22 @@ SET( LIBS
   ${SDL2_MIXER_LIBRARY} 
 )
 
+file(GLOB_RECURSE DLLS RELATIVE deps *.dll)
 include_directories( sdl-examples ${INCLUDEDIRS} )
 
 add_custom_target(copy)
 add_custom_command( TARGET copy PRE_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_directory
   ${CMAKE_SOURCE_DIR}/res ${CMAKE_CURRENT_BINARY_DIR}/res)
+
+
+# Windows needs its dlls.
+if( WIN32)
+add_custom_command( TARGET copy PRE_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy
+  ${DLLS} ${CMAKE_CURRENT_BINARY_DIR})
+endif()
+
 # --------------------------------------
 # Executable to be built
 add_executable( draw_image ./src/m1/sdl_draw_image.cpp)
