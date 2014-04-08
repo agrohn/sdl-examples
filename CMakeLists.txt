@@ -48,6 +48,7 @@ add_custom_command( TARGET copy PRE_BUILD
 
 # Windows needs its dlls.
 if( WIN32)
+
 # do the copying
 foreach( file_i ${DLLS})
     add_custom_command(
