@@ -60,13 +60,32 @@ endforeach( file_i )
 
 
 # --------------------------------------
-# Executable to be built
+# Executable to be built for m1
 add_executable( draw_image ./src/m1/sdl_draw_image.cpp)
 target_link_libraries (draw_image ${LIBS} )
 
+# --------------------------------------
+# Executables to be built for m2
 add_executable( draw_image_rect ./src/m2/sdl_draw_image_rect.cpp)
 target_link_libraries (draw_image_rect  ${LIBS} )
 
+add_executable( alternative_input ./src/m2/sdl_alternative_input.cpp)
+target_link_libraries (alternative_input  ${LIBS} )
+
+add_executable( draw_image_transparency ./src/m2/sdl_draw_image_transparency.cpp)
+target_link_libraries (draw_image_transparency  ${LIBS} )
+
+add_executable( input ./src/m2/sdl_input.cpp)
+target_link_libraries (input  ${LIBS} )
+
+add_executable( keyboard_events ./src/m2/sdl_keyboard_events.cpp)
+target_link_libraries (keyboard_events ${LIBS} )
+
+add_executable( mouse_events ./src/m2/sdl_mouseevent.cpp)
+target_link_libraries (mouse_events ${LIBS} )
+
+add_executable( user_events ./src/m2/sdl_user_events.cpp)
+target_link_libraries (user_events ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)

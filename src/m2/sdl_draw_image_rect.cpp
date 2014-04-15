@@ -1,5 +1,9 @@
-// Copyright anssi.grohn@karelia.fi (c) 2014.
-// Licenced under GPLv3
+////////////////////////////////////////////////////////////////////////////////
+/// SDL Programming
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright anssi.grohn@karelia.fi (c) 2014.
+/// Licenced under GPLv3
+////////////////////////////////////////////////////////////////////////////////
 #include <SDL.h>    
 #include <SDL_image.h>
 #include <stdexcept>
@@ -17,7 +21,8 @@ int main( int argc, char **argv )
     return 1;
   }
   SDL_Window *pScreen = SDL_CreateWindow("Hello", 
-					 0,0,
+					 SDL_WINDOWPOS_CENTERED,
+					 SDL_WINDOWPOS_CENTERED,
 					 WINDOW_WIDTH, 
 					 WINDOW_HEIGHT, 
 					 SDL_WINDOW_SHOWN
@@ -37,9 +42,11 @@ int main( int argc, char **argv )
   // Load directly into texture via SDL_image
   SDL_Texture * pImage = IMG_LoadTexture(renderer, "res/sdl-logo.png");
   if ( pImage == NULL  ) throw runtime_error(SDL_GetError());
-  
+
+  // retrieve texture dimensions
   int w,h;
   SDL_QueryTexture(pImage,NULL, NULL, &w, &h );
+
   // Select part of bitmap to be drawn
   // (actually, it is the entire bitmap)
   SDL_Rect src;
@@ -53,8 +60,8 @@ int main( int argc, char **argv )
 
   dest.x = 120;
   dest.y = 220;
-  dest.w = w/2;
-  dest.h = h/2;
+  dest.w = w/2; // scale image width to 0.5
+  dest.h = h/2; // scale image height to 0.5
   bool bRunning = true;
   // set background color 
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
