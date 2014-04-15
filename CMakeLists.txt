@@ -86,6 +86,9 @@ target_link_libraries (mouse_events ${LIBS} )
 
 add_executable( user_events ./src/m2/sdl_user_events.cpp)
 target_link_libraries (user_events ${LIBS} )
+
+add_executable( multiple_windows ./src/m2/sdl_multiple_windows.cpp)
+target_link_libraries (multiple_windows ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)
