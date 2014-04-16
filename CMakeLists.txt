@@ -14,26 +14,33 @@ find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
 
+
 SET( INCLUDEDIRS 
   ${SDL2_INCLUDE_DIR} 
   ${SDL2_TTF_INCLUDE_DIR} 
   ${SDL2_IMAGE_INCLUDE_DIR} 
   ${SDL2_MIXER_INCLUDE_DIR} 
-  ${TINYXML2_INCLUDE_DIR} 
- ./src/m1
- ./src/m2
- ./src/m3
- ./src/m4
- ./src/m5
- ./src/m6
- ./src/m7
+
+ ./src/examples/m1
+ ./src/examples/m2
+ ./src/examples/m3
+ ./src/examples/m4
+ ./src/examples/m5
+ ./src/examples/m6
+ ./src/examples/m7
+ ./src/brush-ups/m1
+ ./src/brush-ups/m2
+ ./src/brush-ups/m3
+ ./src/brush-ups/m4
+ ./src/brush-ups/m5
+ ./src/brush-ups/m6
+ ./src/brush-ups/m7
  )
 
 SET( LIBS 
   ${SDL2_LIBRARY} 
   ${SDL2_TTF_LIBRARY} 
   ${SDL2_IMAGE_LIBRARY} 
-  ${TINYXML2_LIBRARY} 
   ${SDL2_MIXER_LIBRARY} 
 )
 
@@ -61,34 +68,37 @@ endforeach( file_i )
 
 # --------------------------------------
 # Executable to be built for m1
-add_executable( draw_image ./src/m1/sdl_draw_image.cpp)
+add_executable( draw_image ./src/examples/m1/sdl_draw_image.cpp)
 target_link_libraries (draw_image ${LIBS} )
 
 # --------------------------------------
 # Executables to be built for m2
-add_executable( draw_image_rect ./src/m2/sdl_draw_image_rect.cpp)
+add_executable( draw_image_rect ./src/examples/m2/sdl_draw_image_rect.cpp)
 target_link_libraries (draw_image_rect  ${LIBS} )
 
-add_executable( alternative_input ./src/m2/sdl_alternative_input.cpp)
+add_executable( alternative_input ./src/examples/m2/sdl_alternative_input.cpp)
 target_link_libraries (alternative_input  ${LIBS} )
 
-add_executable( draw_image_transparency ./src/m2/sdl_draw_image_transparency.cpp)
+add_executable( draw_image_transparency ./src/examples/m2/sdl_draw_image_transparency.cpp)
 target_link_libraries (draw_image_transparency  ${LIBS} )
 
-add_executable( input ./src/m2/sdl_input.cpp)
+add_executable( input ./src/examples/m2/sdl_input.cpp)
 target_link_libraries (input  ${LIBS} )
 
-add_executable( keyboard_events ./src/m2/sdl_keyboard_events.cpp)
+add_executable( keyboard_events ./src/examples/m2/sdl_keyboard_events.cpp)
 target_link_libraries (keyboard_events ${LIBS} )
 
-add_executable( mouse_events ./src/m2/sdl_mouseevent.cpp)
+add_executable( mouse_events ./src/examples/m2/sdl_mouseevent.cpp)
 target_link_libraries (mouse_events ${LIBS} )
 
-add_executable( user_events ./src/m2/sdl_user_events.cpp)
+add_executable( user_events ./src/examples/m2/sdl_user_events.cpp)
 target_link_libraries (user_events ${LIBS} )
 
-add_executable( multiple_windows ./src/m2/sdl_multiple_windows.cpp)
+add_executable( multiple_windows ./src/examples/m2/sdl_multiple_windows.cpp)
 target_link_libraries (multiple_windows ${LIBS} )
+
+add_executable( guess ./src/brush-ups/m2/guess.cpp ./src/brush-ups/m2/SDLApp.cpp)
+target_link_libraries (guess ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)
