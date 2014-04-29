@@ -115,6 +115,9 @@ target_link_libraries (rendertotexture ${LIBS} )
 
 add_executable( limitframerate_gfx ./src/brush-ups/m3/sdl_limitframerate_gfx.cpp)
 target_link_libraries (limitframerate_gfx ${LIBS} )
+
+add_executable( fadein ./src/brush-ups/m3/fade-in.cpp)
+target_link_libraries (fadein ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)
