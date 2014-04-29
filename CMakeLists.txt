@@ -13,14 +13,14 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
-
+find_package(SDL2_gfx REQUIRED)
 
 SET( INCLUDEDIRS 
   ${SDL2_INCLUDE_DIR} 
   ${SDL2_TTF_INCLUDE_DIR} 
   ${SDL2_IMAGE_INCLUDE_DIR} 
   ${SDL2_MIXER_INCLUDE_DIR} 
-
+  ${SDL2_GFX_INCLUDE_DIR} 
  ./src/examples/m1
  ./src/examples/m2
  ./src/examples/m3
@@ -42,6 +42,7 @@ SET( LIBS
   ${SDL2_TTF_LIBRARY} 
   ${SDL2_IMAGE_LIBRARY} 
   ${SDL2_MIXER_LIBRARY} 
+  ${SDL2_GFX_LIBRARY} 
 )
 
 file(GLOB_RECURSE DLLS *.dll)
@@ -99,6 +100,21 @@ target_link_libraries (multiple_windows ${LIBS} )
 
 add_executable( guess ./src/brush-ups/m2/guess.cpp ./src/brush-ups/m2/SDLApp.cpp)
 target_link_libraries (guess ${LIBS} )
+# Module 3
+add_executable( shapes ./src/examples/m3/sdl_shapes.cpp)
+target_link_libraries (shapes ${LIBS} )
+
+add_executable( limitframerate ./src/examples/m3/sdl_frameratemgr.cpp)
+target_link_libraries (limitframerate ${LIBS} )
+
+add_executable( fonts ./src/examples/m3/sdl_fonts.cpp)
+target_link_libraries (fonts ${LIBS} )
+
+add_executable( rendertotexture ./src/examples/m3/sdl_new_texture.cpp)
+target_link_libraries (rendertotexture ${LIBS} )
+
+add_executable( limitframerate_gfx ./src/brush-ups/m3/sdl_limitframerate_gfx.cpp)
+target_link_libraries (limitframerate_gfx ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)
