@@ -113,6 +113,9 @@ target_link_libraries (fonts ${LIBS} )
 add_executable( rendertotexture ./src/examples/m3/sdl_new_texture.cpp)
 target_link_libraries (rendertotexture ${LIBS} )
 
+add_executable( rotozoom ./src/examples/m3/sdl_rotozoom.cpp)
+target_link_libraries (rotozoom ${LIBS} )
+
 add_executable( limitframerate_gfx ./src/brush-ups/m3/sdl_limitframerate_gfx.cpp)
 target_link_libraries (limitframerate_gfx ${LIBS} )
 
