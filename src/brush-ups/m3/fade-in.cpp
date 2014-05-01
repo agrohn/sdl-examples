@@ -44,7 +44,7 @@ int main( int argc, char **argv )
     throw runtime_error(SDL_GetError());
   }
 
-  SDL_Renderer *renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED);
+  SDL_Renderer *renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_SOFTWARE);
 
 
   // Load image 
