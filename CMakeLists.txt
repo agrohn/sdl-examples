@@ -116,6 +116,9 @@ target_link_libraries (rendertotexture ${LIBS} )
 add_executable( rotozoom ./src/examples/m3/sdl_rotozoom.cpp)
 target_link_libraries (rotozoom ${LIBS} )
 
+add_executable( pageexample ./src/examples/m3/pageExample.cpp ./src/examples/m3/Page.cpp ./src/examples/m3/Page.h)
+target_link_libraries (pageexample ${LIBS} )
+
 add_executable( limitframerate_gfx ./src/brush-ups/m3/sdl_limitframerate_gfx.cpp)
 target_link_libraries (limitframerate_gfx ${LIBS} )
 
