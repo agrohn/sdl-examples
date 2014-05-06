@@ -124,6 +124,47 @@ target_link_libraries (limitframerate_gfx ${LIBS} )
 
 add_executable( fadein ./src/brush-ups/m3/fade-in.cpp)
 target_link_libraries (fadein ${LIBS} )
+
+# Module 4
+# --------------------------------------
+add_executable( sounds ./src/examples/m4/sdl_sounds.cpp)
+target_link_libraries (sounds ${LIBS} )
+
+add_executable( sounds2 ./src/examples/m4/sdl_sounds2.cpp)
+target_link_libraries (sounds2 ${LIBS} )
+
+add_executable( sounds3 ./src/examples/m4/sdl_sounds3.cpp)
+target_link_libraries (sounds3 ${LIBS} )
+
+add_executable( sounds_timed ./src/examples/m4/sdl_sounds_timed.cpp)
+target_link_libraries (sounds_timed ${LIBS} )
+
+add_executable( sounds_timed2 ./src/examples/m4/sdl_sounds_timed2.cpp)
+target_link_libraries (sounds_timed2 ${LIBS} )
+
+add_executable( sounds_fade ./src/examples/m4/sdl_sounds_fade.cpp)
+target_link_libraries (sounds_fade ${LIBS} )
+
+add_executable( sounds_halthook ./src/examples/m4/sdl_sounds_halthook.cpp)
+target_link_libraries (sounds_halthook ${LIBS} )
+
+add_executable( music ./src/examples/m4/sdl_music.cpp)
+target_link_libraries (music ${LIBS} )
+
+add_executable( music_controls ./src/examples/m4/sdl_music2.cpp)
+target_link_libraries (music_controls ${LIBS} )
+
+add_executable( music_fade ./src/examples/m4/sdl_music3.cpp)
+target_link_libraries (music_fade ${LIBS} )
+
+add_executable( sfx_panning ./src/examples/m4/sdl_sfx_panning.cpp)
+target_link_libraries (sfx_panning ${LIBS} )
+
+add_executable( sfx_revstereo ./src/examples/m4/sdl_sfx_revstereo.cpp)
+target_link_libraries (sfx_revstereo ${LIBS} )
+
+add_executable( sfx_position ./src/examples/m4/sdl_sfx_position.cpp)
+target_link_libraries (sfx_position ${LIBS} )
 # --------------------------------------
 # dependencies
 add_dependencies(draw_image copy)
