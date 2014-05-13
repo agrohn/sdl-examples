@@ -197,4 +197,17 @@ add_executable( sfx_position ./src/examples/m4/sdl_sfx_position.cpp)
 target_link_libraries (sfx_position ${LIBS} )
 add_dependencies(sfx_position copy)
 
+add_executable( animate ./src/examples/m5/sdl_animate.cpp)
+target_link_libraries (animate ${LIBS} )
 
+add_executable( animate_framerate ./src/examples/m5/sdl_animate_framerate.cpp)
+target_link_libraries (animate_framerate ${LIBS} )
+add_dependencies(animate copy)
+
+add_executable( background ./src/examples/m5/sdl_background.cpp)
+target_link_libraries (background ${LIBS} )
+add_dependencies(background copy)
+
+add_executable( background2 ./src/examples/m5/sdl_background2.cpp)
+target_link_libraries (background2 ${LIBS} )
+add_dependencies(background2 copy)
