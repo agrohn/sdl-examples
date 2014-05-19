@@ -211,3 +211,23 @@ add_dependencies(background copy)
 add_executable( background2 ./src/examples/m5/sdl_background2.cpp)
 target_link_libraries (background2 ${LIBS} )
 add_dependencies(background2 copy)
+
+add_executable( collision_circles ./src/examples/m6/sdl_collision_circles.cpp)
+target_link_libraries (collision_circles ${LIBS} )
+add_dependencies(collision_circles copy)
+
+add_executable( collision_line_circle ./src/examples/m6/sdl_collision_line_circle.cpp)
+target_link_libraries (collision_line_circle ${LIBS} )
+add_dependencies(collision_line_circle copy)
+
+add_executable( collision_line_rect ./src/examples/m6/sdl_collision_line_rect.cpp)
+target_link_libraries (collision_line_rect ${LIBS} )
+add_dependencies(collision_line_rect copy)
+
+add_executable( collision_rectangles ./src/examples/m6/sdl_collision_rectangles.cpp)
+target_link_libraries (collision_rectangles ${LIBS} )
+add_dependencies(collision_rectangles copy)
+
+add_executable( collision_per_pixel ./src/examples/m6/sdl_collision_per_pixel.cpp)
+target_link_libraries (collision_per_pixel ${LIBS} )
+add_dependencies(collision_per_pixel copy)
