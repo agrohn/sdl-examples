@@ -196,7 +196,7 @@ add_dependencies(sfx_revstereo copy)
 add_executable( sfx_position ./src/examples/m4/sdl_sfx_position.cpp)
 target_link_libraries (sfx_position ${LIBS} )
 add_dependencies(sfx_position copy)
-
+# module 5
 add_executable( animate ./src/examples/m5/sdl_animate.cpp)
 target_link_libraries (animate ${LIBS} )
 
@@ -211,7 +211,7 @@ add_dependencies(background copy)
 add_executable( background2 ./src/examples/m5/sdl_background2.cpp)
 target_link_libraries (background2 ${LIBS} )
 add_dependencies(background2 copy)
-
+# module 6
 add_executable( collision_circles ./src/examples/m6/sdl_collision_circles.cpp)
 target_link_libraries (collision_circles ${LIBS} )
 add_dependencies(collision_circles copy)
@@ -231,3 +231,45 @@ add_dependencies(collision_rectangles copy)
 add_executable( collision_per_pixel ./src/examples/m6/sdl_collision_per_pixel.cpp)
 target_link_libraries (collision_per_pixel ${LIBS} )
 add_dependencies(collision_per_pixel copy)
+# module 7
+add_executable( speed ./src/examples/m7/sdl_speed.cpp)
+target_link_libraries (speed ${LIBS} )
+add_dependencies(speed copy)
+
+add_executable( acceleration ./src/examples/m7/sdl_acceleration.cpp)
+target_link_libraries (acceleration ${LIBS} )
+add_dependencies(acceleration copy)
+
+add_executable( gravity ./src/examples/m7/sdl_gravity.cpp)
+target_link_libraries (gravity ${LIBS} )
+add_dependencies(gravity copy)
+
+add_executable( deadlock ./src/examples/m7/sdl_deadlock.cpp)
+target_link_libraries (deadlock ${LIBS} )
+add_dependencies(deadlock copy)
+
+add_executable( mutex ./src/examples/m7/sdl_mutex.cpp)
+target_link_libraries (mutex ${LIBS} )
+add_dependencies(mutex copy)
+
+add_executable( mutex2 ./src/examples/m7/sdl_mutex2.cpp)
+target_link_libraries (mutex2 ${LIBS} )
+add_dependencies(mutex2 copy)
+
+
+
+add_executable( threads ./src/examples/m7/sdl_threads.cpp)
+target_link_libraries (threads ${LIBS} )
+add_dependencies(threads copy)
+
+add_executable( threads2 ./src/examples/m7/sdl_threads2.cpp)
+target_link_libraries (threads2 ${LIBS} )
+add_dependencies(threads2 copy)
+
+add_executable( particles ./src/examples/m7/sdl_particles.cpp ./src/examples/m7/CTimer.cpp)
+target_link_libraries (particles ${LIBS} )
+add_dependencies(particles copy)
+
+add_executable( particles2 ./src/examples/m7/sdl_particles2.cpp ./src/examples/m7/CTimer.cpp)
+target_link_libraries (particles2 ${LIBS} )
+add_dependencies(particles2 copy)
