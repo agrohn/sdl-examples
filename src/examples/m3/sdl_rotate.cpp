@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // SDL Programming 
 ////////////////////////////////////////////////////////////////////////////////
-// Example of rotation and scaling using SDL_gfx.
-// \author anssi.grohn@karelia.fi (c) 2014
+// Example of rotation and scaling using SDL_RenderCopyEx.
+// \author anssi.grohn@karelia.fi (c) 2014-2015.
 ////////////////////////////////////////////////////////////////////////////////
 #include <SDL.h>    
 #include <SDL_image.h>
@@ -40,7 +40,7 @@ int main( int argc, char **argv )
     throw runtime_error(SDL_GetError());
 
   // Load images
-  SDL_Surface * pImage  = IMG_Load("./res/plane.png");
+  SDL_Texture * pImage  = IMG_LoadTexture(renderer,"./res/plane.png");
   float fRotation = 0.0f;
   float fScale = 0.1f;
 
@@ -71,29 +71,31 @@ int main( int argc, char **argv )
 
     SDL_SetRenderDrawColor(renderer, 0,0,0,255);
     SDL_RenderClear(renderer);
+    // Determine width and height for texture in pixels.
+    SDL_QueryTexture( pImage, NULL, NULL, &dest.w, &dest.h);
+    // scale texture
+    dest.w *= fScale;
+    dest.h *= fScale;
+    // center it
+    dest.x -= dest.w/2;
+    dest.y -= dest.h/2;
 
-    SDL_Surface *pTmp = rotozoomSurface( pImage, fRotation, fScale, 1 );
-    dest.x -= pTmp->w / 2;
-    dest.y -= pTmp->h / 2;
-    dest.w  = pTmp->w;
-    dest.h  = pTmp->h;
-    SDL_Texture *pTexture = SDL_CreateTextureFromSurface(renderer,pTmp);
+    // Compute rotation pivot point 
+    // (actually, if you pass NULL to RenderCopyEx, logical center will be the default action anyway)
+    SDL_Point center = { dest.w/2.0, dest.h/2.0};    
 
-    SDL_RenderCopy( renderer, pTexture, NULL, &dest);
-      
-    SDL_FreeSurface( pTmp );
-    SDL_DestroyTexture(pTexture);
-
+    // Render image to screen
+    SDL_RenderCopyEx( renderer, pImage, NULL, &dest, fRotation, &center, SDL_FLIP_NONE);
     SDL_RenderPresent( renderer );
  
-    // Append rotation and scale
+    // Alter rotation and scaling values.
     fRotation += 0.5f;
     if ( fRotation > 360.0f ) fRotation -= 360.0f;
     fScale+=0.001f;
     if ( fScale > 3.0f ) fScale = 0.1f;
   }
 
-  SDL_FreeSurface(pImage );
+  SDL_DestroyTexture( pImage );
   SDL_Quit();
   
   return 0;
