@@ -82,7 +82,7 @@ int main( int argc, char **argv )
 
     // Compute rotation pivot point 
     // (actually, if you pass NULL to RenderCopyEx, logical center will be the default action anyway)
-    SDL_Point center = { dest.w/2.0, dest.h/2.0};    
+    SDL_Point center = { dest.w/2, dest.h/2};    
 
     // Render image to screen
     SDL_RenderCopyEx( renderer, pImage, NULL, &dest, fRotation, &center, SDL_FLIP_NONE);

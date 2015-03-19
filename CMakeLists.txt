@@ -127,9 +127,9 @@ add_executable( rendertotexture ./src/examples/m3/sdl_new_texture.cpp)
 target_link_libraries (rendertotexture ${LIBS} )
 add_dependencies(rendertotexture copy)
 
-add_executable( rotozoom ./src/examples/m3/sdl_rotozoom.cpp)
-target_link_libraries (rotozoom ${LIBS} )
-add_dependencies(rotozoom copy)
+add_executable( rotate ./src/examples/m3/sdl_rotate.cpp)
+target_link_libraries (rotate ${LIBS} )
+add_dependencies(rotate copy)
 
 add_executable( pageexample ./src/examples/m3/pageExample.cpp ./src/examples/m3/Page.cpp ./src/examples/m3/Page.h)
 target_link_libraries (pageexample ${LIBS} )
@@ -231,6 +231,10 @@ add_dependencies(collision_rectangles copy)
 add_executable( collision_per_pixel ./src/examples/m6/sdl_collision_per_pixel.cpp)
 target_link_libraries (collision_per_pixel ${LIBS} )
 add_dependencies(collision_per_pixel copy)
+
+add_executable( tiles ./src/examples/m6/sdl_tiles.cpp)
+target_link_libraries (tiles ${LIBS} )
+add_dependencies(tiles copy)
 # module 7
 add_executable( speed ./src/examples/m7/sdl_speed.cpp)
 target_link_libraries (speed ${LIBS} )
