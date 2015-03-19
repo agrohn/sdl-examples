@@ -50,6 +50,10 @@ int main( int argc, char **argv )
   // Load Tmx map
   Tmx::Map *map = new Tmx::Map();
   map->ParseFile("res/map.tmx");
+  if ( map->HasError())
+  {
+    throw runtime_error(map->GetEerrorText());
+  }
 
   // make proper path from image name.
   stringstream ss;
@@ -126,7 +130,6 @@ int main( int argc, char **argv )
     {
       //cout << "Drawing layer: " << layer->GetName() << "\n";
 
-      // Draw underlying stuff first
       for( int r=0;r<layer->GetHeight();r++)
       {
 	for( int c=0;c<layer->GetWidth();c++)
@@ -138,8 +141,8 @@ int main( int argc, char **argv )
 	    const Tmx::MapTile & tile = layer->GetTile(c,r);
 	    // Compute tile position in tileset image.
 	    // (tileset ids begin from 1, hence -1).
-	    int tileColumn = ( firstGid + (tile.id -1) ) % tilesOnRow;
-	    int tileRow    = ( firstGid + (tile.id -1) ) / tilesOnRow;
+	    int tileColumn = ( firstGid + tile.id - 1 ) % tilesOnRow;
+	    int tileRow    = ( firstGid + tile.id - 1 ) / tilesOnRow;
 
 	    // Where to extract tile from tileset image.
 	    SDL_Rect src = { tileColumn * tileWidth,
