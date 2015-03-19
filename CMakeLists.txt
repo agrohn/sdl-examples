@@ -14,14 +14,15 @@ find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_gfx REQUIRED)
-
+find_package(TMXParser REQUIRED)
 SET( INCLUDEDIRS 
   ${SDL2_INCLUDE_DIR} 
   ${SDL2_TTF_INCLUDE_DIR} 
   ${SDL2_IMAGE_INCLUDE_DIR} 
   ${SDL2_MIXER_INCLUDE_DIR} 
   ${SDL2_GFX_INCLUDE_DIR} 
- ./src/examples/m1
+  ${TMXPARSER_INCLUDE_DIR} 
+  ./src/examples/m1
  ./src/examples/m2
  ./src/examples/m3
  ./src/examples/m4
@@ -43,6 +44,7 @@ SET( LIBS
   ${SDL2_IMAGE_LIBRARY} 
   ${SDL2_MIXER_LIBRARY} 
   ${SDL2_GFX_LIBRARY} 
+  ${TMXPARSER_LIBRARY} 
 )
 
 file(GLOB_RECURSE DLLS *.dll)
@@ -235,6 +237,10 @@ add_dependencies(collision_per_pixel copy)
 add_executable( tiles ./src/examples/m6/sdl_tiles.cpp)
 target_link_libraries (tiles ${LIBS} )
 add_dependencies(tiles copy)
+
+add_executable( tmxtiles ./src/examples/m6/sdl_tiles_tmxparser.cpp)
+target_link_libraries (tmxtiles ${LIBS} )
+add_dependencies(tmxtiles copy)
 # module 7
 add_executable( speed ./src/examples/m7/sdl_speed.cpp)
 target_link_libraries (speed ${LIBS} )
