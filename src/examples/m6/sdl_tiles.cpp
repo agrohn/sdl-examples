@@ -29,7 +29,7 @@ int main( int argc, char **argv )
   if ( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
     throw runtime_error(SDL_GetError());
 
-  SDL_Window *window = SDL_CreateWindow( "Rectangle collision example",
+  SDL_Window *window = SDL_CreateWindow( "Example of a manually constructed tilemap ",
 					 SDL_WINDOWPOS_CENTERED,
 					 SDL_WINDOWPOS_CENTERED,
 					 WINDOW_WIDTH, 
