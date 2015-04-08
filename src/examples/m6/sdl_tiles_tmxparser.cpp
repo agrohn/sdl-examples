@@ -119,10 +119,7 @@ int main( int argc, char **argv )
     SDL_SetRenderDrawColor(renderer, 0,0,0,255);
     SDL_RenderClear(renderer);
 
-    // We have only one tileset, so this is safe
-    int tilesOnRow    = map->GetTileset(0)->GetImage()->GetWidth()  / map->GetTileset(0)->GetTileWidth();
-    int tileWidth     = map->GetTileset(0)->GetTileWidth();
-    int tileHeight    = map->GetTileset(0)->GetTileHeight();
+
     
     // Assuming layers are stored in correct order (lowest to topmost)
     for( const Tmx::TileLayer *layer : map->GetTileLayers())
@@ -133,9 +130,13 @@ int main( int argc, char **argv )
       {
 	for( int c=0;c<layer->GetWidth();c++)
 	{
+	  int tsi = layer->GetTileTilesetIndex(c,r);
 	  // if tile has an index in tileset, then it can be drawn.
-	  if ( layer->GetTileTilesetIndex(c,r) != -1 )
+	  if ( tsi != -1 )
 	  {
+	    int tileWidth     = map->GetTileset(tsi)->GetTileWidth();
+	    int tileHeight    = map->GetTileset(tsi)->GetTileHeight();
+	    int tilesOnRow    = map->GetTileset(tsi)->GetImage()->GetWidth() / tileWidth;
 	    // access our current tile
 	    const Tmx::MapTile & tile = layer->GetTile(c,r);
 	    // Compute tile position in tileset image.
